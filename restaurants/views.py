@@ -11,11 +11,10 @@ def restaurant_details(request, res_id):
 	if form.is_valid():
 		star_count = form.cleaned_data.get('star_count')
 		description = form.cleaned_data.get('description')
-		reveiw, created = Review.objects.update_or_create(user = request.user,
+		reveiw, created = Review.objects.update_or_create(user = request.user, res_id = res_id,
 													defaults = {
 														'star_count': star_count,
 														'description': description,
-														'res_id': res_id,
 													}
 												)
 		if created:

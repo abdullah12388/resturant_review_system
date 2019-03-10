@@ -29,48 +29,50 @@
                     <p class="text-muted">Aprrox ₹ {{res_data.average_cost_for_two}} for two </p>
                 </div>
             </div>
-            <h3 class="mt-5">Events</h3>
-            <div class="row mt-3">
-                <div class="col-md-9">
-                    <h5>{{res_data.zomato_events.0.event.title}}</h5>
-                    <p class="text-muted">{{res_data.zomato_events.0.event.friendly_timing_str}}, {{res_data.zomato_events.0.event.display_time}}</p>
-                    <p>{{res_data.zomato_events.0.event.description}}</p>
-                    <button type="button" class="btn btn-sm btn-outline-success" data-toggle="modal" data-target="#eventModal">
-                                View all {{res_data.zomato_events | length}} events
-                    </button>
+            {% if res_data.zomato_events %}
+                <h3 class="mt-5">Events</h3>
+                <div class="row mt-3">
+                    <div class="col-md-9">
+                        <h5>{{res_data.zomato_events.0.event.title}}</h5>
+                        <p class="text-muted">{{res_data.zomato_events.0.event.friendly_timing_str}}, {{res_data.zomato_events.0.event.display_time}}</p>
+                        <p>{{res_data.zomato_events.0.event.description}}</p>
+                        <button type="button" class="btn btn-sm btn-outline-success" data-toggle="modal" data-target="#eventModal">
+                                    View all {{res_data.zomato_events | length}} events
+                        </button>
 
-                    <!-- Event Modal -->
-                    <div class="modal fade" id="eventModal" tabindex="-1" role="dialog" aria-labelledby="eventModalLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-lg" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h3 class="modal-title" id="exampleModalLabel">Events</h3>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    {% for event_item in res_data.zomato_events %}
-                                        <div class="row mt-3">
-                                            <div class="col-md-9">
-                                                <h5>{{event_item.event.title}}</h5>
-                                                <p class="text-muted">{{event_item.event.friendly_timing_str}}, {{event_item.event.display_time}}</p>
-                                                <small>{{event_item.event.description}}</small>
+                        <!-- Event Modal -->
+                        <div class="modal fade" id="eventModal" tabindex="-1" role="dialog" aria-labelledby="eventModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-lg" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h3 class="modal-title" id="exampleModalLabel">Events</h3>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        {% for event_item in res_data.zomato_events %}
+                                            <div class="row mt-3">
+                                                <div class="col-md-9">
+                                                    <h5>{{event_item.event.title}}</h5>
+                                                    <p class="text-muted">{{event_item.event.friendly_timing_str}}, {{event_item.event.display_time}}</p>
+                                                    <small>{{event_item.event.description}}</small>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <img src="{{event_item.event.photos.0.photo.url}}" class="img-fluid">
+                                                </div>
                                             </div>
-                                            <div class="col-md-3">
-                                                <img src="{{event_item.event.photos.0.photo.url}}" class="img-fluid">
-                                            </div>
-                                        </div>
-                                    {% endfor %}
+                                        {% endfor %}
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <div class="col-md-3">
+                        <img src="{{res_data.zomato_events.0.event.photos.0.photo.url}}" class="img-fluid">
+                    </div>
                 </div>
-                <div class="col-md-3">
-                    <img src="{{res_data.zomato_events.0.event.photos.0.photo.url}}" class="img-fluid">
-                </div>
-            </div>
+            {% endif %}
             <h3 class="mt-5">Reviews</h3>
             {% for review in review_obj %}
                 <div class="d-flex flex-row mt-3">
