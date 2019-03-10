@@ -11,7 +11,8 @@
 
     <link rel="stylesheet" type="text/css" href="{% static 'css/main.css/' %}">
    
-
+    <!-- angular script -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular.min.js"></script>
   
 </head>
 <body style="font-family: ubuntu">
@@ -35,8 +36,6 @@
                             Welcome {{user}}
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">Dashboard</a>
-                            <a class="dropdown-item" href="#">Profile</a>
                             <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
                         </div>
                         {% else %}
@@ -65,14 +64,28 @@
     </div>
 {% block body%}
 {% endblock %}
-   
+    <footer class="font-small my-5">
+        <div class="container">
+            <div class="row mt-4">
+                <div class="col-md-4 offset-md-4 text-center">
+                    <img src="{% static '/img/moengage_logo.svg/' %}" class="pb-2" height="65px" width="125px" alt="">
+                    <p class="text-muted text-medium" > MoEngage India Private Limited, Moksha Mansion, 151, Sarjapur Main Road, Koramangala 1st Block,4th Floor, Bengaluru, Karnataka 560034</p>
+                    <span class="font-weight-bold text-muted">
+                        <i class="fa fa-phone">
+                        </i> 080 4121 9246
+                    </span>
+
+                </div>
+            </div>
+        </div>
+    </footer>
     <script crossorigin="anonymous" integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script crossorigin="anonymous" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
     <script crossorigin="anonymous" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
-
+    <script type="text/javascript" src="{% static 'js/search.js' %}"></script>
 
     <script type="text/javascript">
         window.setTimeout(function() {
@@ -80,29 +93,6 @@
             $(this).remove(); 
             });
         }, 2000);
-    </script>
-
-    <script>
-    // Initialize and add the map
-    var latitude = {{res_data.location.latitude}}
-    var longitude = {{res_data.location.longitude}}
-    function initMap() {
-      // The location of Uluru
-      var uluru = {lat: latitude, lng: longitude};
-      // The map, centered at Uluru
-      var map = new google.maps.Map(
-          document.getElementById('map'), {zoom: 15, center: uluru});
-      // The marker, positioned at Uluru
-      var marker = new google.maps.Marker({position: uluru, map: map});
-    }
-    </script>
-        <!--Load the API from the specified URL
-        * The async attribute allows the browser to render the page while the API loads
-        * The key parameter will contain your own API key (which is not needed for this tutorial)
-        * The callback parameter executes the initMap() function
-    -->
-    <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCdjXsPsZVPtnP-bYsH7t3qxHyhZZkCYu0&callback=initMap">
     </script>
 </body>
 </html>

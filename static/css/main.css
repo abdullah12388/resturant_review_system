@@ -1,18 +1,14 @@
-.form-control-feedback {
-    position: absolute;
-    z-index: 2;
-    display: block;
-    width: 2.375rem;
-    height: 2.375rem;
-    line-height: 2.375rem;
-    text-align: center;
-    pointer-events: none;
-    color: #aaa;
+.text-medium {
+    font-size: 13px;
 }
-.form-control-search {
-    padding-left: 2.375rem;
+.list-group-item:hover{
+    color: #337ab7;
+    text-shadow:  0 0 1em #337ab7;
+    cursor: pointer;
 }
-
+.z-input{
+    width: 100% !important;
+}
 @media only screen and (max-width:600px) {
   .banner{
     background-image: url('/static/img/join_in.jpg');
@@ -42,6 +38,7 @@
     background-image: url('/static/img/join_in.jpg');
     background-repeat: no-repeat;
     background-size:cover;
+    height:400px;
     }
 }
 @media only screen and (min-width:1200px) {
@@ -49,5 +46,6 @@
     background-image: url('/static/img/join_in.jpg');
     background-repeat: no-repeat;
     background-size:cover;
+    height: 400px;
     }
 }

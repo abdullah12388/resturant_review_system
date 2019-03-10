@@ -2,26 +2,75 @@
 {% load crispy_forms_tags %}
 {% load staticfiles %}
 {% block body %}
-<div class="container-fluid banner">
-    <div class="jumbotron  pt-md-3" style="background: transparent;height: 400px">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-7 offset-md-3 justify-content-center text-center">
-                    <h1 class="display-4">Resturant Review System</h1>
-                    <p class="mt-4 text-muted">Search Resturants By Cusine, Type and Category
-                    </p>
-                    <div class="form-group has-search">
-                        <span class="fa fa-search form-control-feedback"></span>
-                        <input type="text" class="form-control form-control-search" placeholder="Search">
+{% verbatim %}
+<div class="container-fluid" ng-app="app" ng-controller="ctrl" ng-cloak>
+    <div class="container-fluid banner">
+        <div class="jumbotron  pt-md-3" style="background: transparent;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 offset-md-2 justify-content-center text-center">
+                        <h1 class="display-4">Restaurant Review System</h1>
+                        <p class="mt-4 text-muted">Search Resturants By Cusine, Type and Category
+                        </p>
                     </div>
-                    <!-- <a href="{% url 'login' %}" class="btn btn-lg btn-outline-info mt-4">Login To Continue</a> -->
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <form class="form-inline">
+                            <div class="form-row">
+                                <div class="col-md-2">
+                                    <input type="text" class="form-control z-input" placeholder="Search Category" ng-model="search_category" ng-keyup="fetchData(search_category)"  >
+                                    <li class="list-group-item" ng-if= "search_category !=''" ng-repeat="filterCategory in resultData" ng-click="fillTextbox(filterCategory,'category')" ng-cloak>{{filterCategory.name}}</li>
+                                </div>
+                                <div class="col-md-2">
+                                    <input type="text" class="form-control z-input" placeholder="Search Cusine" ng-model="search_cuisine" ng-keyup="fetchCusine(search_cuisine,'cuisines')" >
+                                    <li class="list-group-item" ng-if= "search_cuisine !=''"ng-repeat="cusine in cuisineResult" ng-click="fillTextbox(cusine,'cuisines')" ng-cloak>{{cusine.cuisine_name}}</li>
+                                </div>
+                                <div class="col-md-2">
+                                    <input type="text" class="form-control z-input" placeholder="Search Type" ng-model="search_type" ng-keyup="fetchType(search_type,'establishments')">
+                                    <li class="list-group-item" ng-if= "search_type !=''" ng-repeat="type in typeResult" ng-click="fillTextbox(type,'establishments')" ng-cloak>{{type.name}}</li>
+                                </div>
+                                <div class="col-md-5">
+                                    <input type="text" class="form-control z-input" placeholder="Search Restaurants" ng-model="query_string">
+                                </div>
+                                <div class="col-md-1">
+                                    <button type="submit" class="btn btn-success" ng-click="fetchRestaurants(query_string)">Search</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
-
+        </div>
+    </div>
+    <div class="container">
+        <h3>Showing Restaurants in Bengaluru</h3>
+        <div class="row mt-4">
+            <div class="col-md-6 mt-3" ng-repeat="res in restaurants">
+                <div class="card shadow-lg">
+                    <div class="card-body">
+                        <div class="d-md-flex flex-row">
+                            <div class="pl-4">
+                                <a href="/restaurant/{{res.restaurant.id}}/">
+                                    <img ng-src="{{res.restaurant.thumb?res.restaurant.thumb:'/static/img/open.png'}}"  class="rounded-circle" width="100">
+                                </a>
+                            </div>
+                            <div class="pl-5">
+                                <a href="/restaurant/{{res.restaurant.id}}/" style="text-decoration: none" class="text-dark">
+                                    <h5>{{res.restaurant.name}}</h5>
+                                </a>
+                                <small class='text-muted'>{{res.restaurant.cuisines}}
+                                </small>
+                                <p class="text-muted text-medium">Aprrox ₹ {{res.restaurant.average_cost_for_two}} for two </p>
+                                <a href="{{res.restaurant.url}}" target="_blank" style="text-decoration: none" class="text-success"><small>View This restaurant on Zomato</small></a>
+                                <h4><span class="badge badge-success">{{res.restaurant.user_rating.aggregate_rating}}</span></h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
-<div class="container">
-    <h3>Showing Resturants in Bengaluru</h3>
-</div>
+{% endverbatim %}
 {% endblock %}

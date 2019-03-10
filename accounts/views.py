@@ -16,7 +16,7 @@ def registration_view(request):
 		user.save()
 		new_user = authenticate(username=user.username, password=password)
 		login(request, new_user)
-		return redirect('register')
+		return redirect('landing')
 
 	context = {
 		"form":form
