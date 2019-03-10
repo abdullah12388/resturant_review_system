@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% load staticfiles %}
+{% block body %}
+<div class="container-fluid banner">
+    <div class="jumbotron  pt-md-3" style="background: transparent;height: 400px">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-7 offset-md-3 justify-content-center text-center">
+                    <h1 class="display-4">Resturant Review System</h1>
+                    <p class="mt-4 text-muted">Search Resturants By Cusine, Type and Category
+                    </p>
+                    <div class="form-group has-search">
+                        <span class="fa fa-search form-control-feedback"></span>
+                        <input type="text" class="form-control form-control-search" placeholder="Search">
+                    </div>
+                    <!-- <a href="{% url 'login' %}" class="btn btn-lg btn-outline-info mt-4">Login To Continue</a> -->
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<div class="container">
+    <h3>Showing Resturants in Bengaluru</h3>
+</div>
+{% endblock %}

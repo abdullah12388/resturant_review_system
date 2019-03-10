@@ -1,0 +1,53 @@
+.form-control-feedback {
+    position: absolute;
+    z-index: 2;
+    display: block;
+    width: 2.375rem;
+    height: 2.375rem;
+    line-height: 2.375rem;
+    text-align: center;
+    pointer-events: none;
+    color: #aaa;
+}
+.form-control-search {
+    padding-left: 2.375rem;
+}
+
+@media only screen and (max-width:600px) {
+  .banner{
+    background-image: url('/static/img/join_in.jpg');
+    background-repeat: no-repeat;
+    background-size:cover;
+    }
+}
+
+@media only screen  and (min-width:600px) {
+  .banner{
+    background-image: url('/static/img/join_in.jpg');
+    background-repeat: no-repeat;
+    background-size:cover;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+  .banner{
+    background-image: url('/static/img/join_in.jpg');
+    background-repeat: no-repeat;
+    background-size:cover;
+    }
+} 
+
+@media only screen and (min-width:992px) {
+  .banner{
+    background-image: url('/static/img/join_in.jpg');
+    background-repeat: no-repeat;
+    background-size:cover;
+    }
+}
+@media only screen and (min-width:1200px) {
+  .banner{
+    background-image: url('/static/img/join_in.jpg');
+    background-repeat: no-repeat;
+    background-size:cover;
+    }
+}
