@@ -10,7 +10,7 @@ app.controller('ctrl', function($scope, $http){
 	$scope.queryStringParams = {};
 
 	$scope.fetchRestaurants = function (query) {
-		var search_url = 'https://developers.zomato.com/api/v2.1/search?entity_id=4&entity_type=city&count=10'var search_url = 'https://developers.zomato.com/api/v2.1/search?entity_id=4&entity_type=city&count=10';
+		var search_url = 'https://developers.zomato.com/api/v2.1/search?entity_id=4&entity_type=city&count=10';
 		if(query !== undefined){
 			search_url = search_url+"&q="+query;
 		}
