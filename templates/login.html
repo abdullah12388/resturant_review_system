@@ -1,11 +1,10 @@
 {% extends "base.html" %}
 {% load crispy_forms_tags %}
-{% load staticfiles %}
 {% block body %}
 <div class="container mb-5">
     <div class="row">
         <div class="col-md-4 offset-md-1">
-            <img src="{% static 'img/open.png' %}" class="mt-4">
+            <img src="{{url}}/static/img/open.png" class="mt-4">
             <h3 class="mt-4">Discover resturants based on type, cusine and category</h3>
         </div>
         <div class="col-md-4 offset-md-1 mt-3">

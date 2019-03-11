@@ -6,6 +6,7 @@ from django.contrib.auth import (
 		login,
 		logout,
 	)
+from rrs_admin import config
 
 def registration_view(request):
 	form = UserRegistrationForm(request.POST or None)
@@ -19,7 +20,8 @@ def registration_view(request):
 		return redirect('landing')
 
 	context = {
-		"form":form
+		"form":form,
+		"url":config.url
 	}
 	return render(request, "register.html", context)
 
@@ -29,4 +31,4 @@ def logout_view(request):
 
 @login_required
 def landing_view(request):
-	return render(request, 'landing.html', {})
+	return render(request, 'landing.html', {"url":config.url})

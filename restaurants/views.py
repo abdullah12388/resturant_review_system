@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from restaurants.forms import ReviewForm
 from restaurants.models import Review
 from django.contrib import messages
+from rrs_admin import config
 import requests
 import json
 
@@ -28,7 +29,8 @@ def restaurant_details(request, res_id):
 	res_obj = response.json()
 	context = {
 		'res_data': res_obj,
-		'form':form
+		'form':form,
+		"url":config.url
 	}
 	get_review(context, res_id)
 	return render(request, 'restaurant.html', context)
