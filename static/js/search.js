@@ -6,12 +6,11 @@ app.config(function($httpProvider) {
 app.controller('ctrl', function($scope, $http){
 	$scope.restaurants = '';
 	var userKey = 'cd9ca69cad612fbd6b4cb9fe9d503906';
-	var search_url = 'https://developers.zomato.com/api/v2.1/search?entity_id=4&entity_type=city&count=10'
 	$scope.query_string = '';
 	$scope.queryStringParams = {};
 
 	$scope.fetchRestaurants = function (query) {
-		debugger;
+		var search_url = 'https://developers.zomato.com/api/v2.1/search?entity_id=4&entity_type=city&count=10'var search_url = 'https://developers.zomato.com/api/v2.1/search?entity_id=4&entity_type=city&count=10';
 		if(query !== undefined){
 			search_url = search_url+"&q="+query;
 		}
